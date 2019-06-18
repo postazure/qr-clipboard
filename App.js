@@ -46,11 +46,10 @@ export default class App extends React.Component {
 
         {this.renderQR()}
 
-
         {
           this.state.clipboardValue
             ? <TapToReveal>{this.state.clipboardValue}</TapToReveal>
-            : <Text style={styles.plainText}>'Huh? Nothing in your clipboard'</Text>
+            : <Text style={styles.plainText}>Huh? Nothing in your clipboard</Text>
         }
       </View>
     )
@@ -84,23 +83,13 @@ class TapToReveal extends React.Component {
 }
 
 class QRCode extends React.Component {
-  state = {
-    highContrast: false
-  }
-
-  toggleContrast = () => {
-    this.setState({highContrast: !this.state.highContrast})
-  }
-
   render() {
     return (
-      <TouchableOpacity onPress={this.toggleContrast}>
       <QRCodeGenerator
         value={this.props.value}
         size={Dimensions.get('window').width * 0.72}
-        bgColor={this.state.highContrast ? 'white' : '#2D9C00'}
-        fgColor='black'/>
-      </TouchableOpacity>
+        bgColor='black'
+        fgColor='white'/>
     )
   }
 }
@@ -108,17 +97,15 @@ class QRCode extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000000',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'space-around',
   },
   title: {
     fontSize: 50,
-    color: '#2D9C00',
   },
   plainText: {
     fontSize: 25,
-    color: '#2D9C00',
   },
   gray: {
     color: '#5c5d5a',
