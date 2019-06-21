@@ -86,7 +86,7 @@ class QRCode extends React.Component {
   render() {
     return (
       <QRCodeGenerator
-        value={this.props.value}
+        value={encodeURI(this.props.value)}
         size={Dimensions.get('window').width * 0.72}
         bgColor='black'
         fgColor='white'/>
